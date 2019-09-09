@@ -1,24 +1,161 @@
+html {
+  font-family: sans-serif;
+  background: #eee;
+  padding: 0.01rem;
+  font-size: 16.25vw;
+}
+
+body {
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  font-size: 0.1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: serif;
+  color: #377ba8;
+  margin: 0.01rem 0;
+}
+
+a {
+  color: #377ba8;
+}
+
+hr {
+  border: none;
+  border-top: 0.01rem solid lightgray;
+}
+
+nav {
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  padding: 0 0.005rem;
+}
+
+nav h1 {
+  flex: auto;
+  margin: 0;
+}
+
+nav h1 a {
+  text-decoration: none;
+  padding: 0.0025rem 0.005rem;
+}
+
+nav ul  {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a, nav ul li span, header .action {
+  display: block;
+  padding: 0.005rem;
+}
+
+.content {
+  padding: 0 0.01rem 0.01rem;
+}
+
+.content > header {
+  border-bottom: 0.01rem solid lightgray;
+  display: flex;
+  align-items: flex-end;
+}
+
+.content > header h1 {
+  flex: auto;
+  margin: 0.01rem 0 0.0025rem 0;
+}
+
+.flash {
+  margin: 1em 0;
+  padding: 1em;
+  background: #cae6f6;
+  border: 0.01rem solid #377ba8;
+}
+
+.post > header {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.85em;
+}
+
+.post > header > div:first-of-type {
+  flex: auto;
+}
+
+.post > header h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.post .about {
+  color: slategray;
+  font-style: italic;
+}
+
+.post .body {
+  white-space: pre-line;
+}
+
+.content:last-child {
+  margin-bottom: 0;
+}
+
+.content form {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content input, .content textarea {
+  margin-bottom: 1em;
+}
+
+.content textarea {
+  min-height: 12em;
+  resize: vertical;
+}
+
+input.danger {
+  color: #cc2f2e;
+}
+
+input[type=submit] {
+  align-self: start;
+  min-width: 10em;
+}
+
 *{
-	margin: 0px;
-	padding: 0px;
+	margin: 0rem;
+	padding: 0rem;
 }
 .label{
-	width: 400px;
-	height: 500px;
-	margin: 120px auto;
+	width: 0.5rem;
+	height: 1.6rem;
+	margin: 0.15rem auto;
 	text-align: center;
 }
 .label>ul{
-	width: 400px;
-	height: 50px;
+	width: 100%;
+	height: 0.06rem;
 }
 .label>ul>li{
 	list-style: none;
 	float: left;
-	width: 100px;
-	height: 50px;
+	width: 50%;
+	height: 0.06rem;
 	background-color: gray;
-	line-height: 50px;
+	line-height: 0.06rem;
 	color: white;
 }
 .label>div{
@@ -40,6 +177,11 @@
 	display: block;
 	box-shadow: 5px 5px 20px #333333;
 }
-.borrowTab{
-
-}
+/*如果位置调整:after和:before的角度，再用旋转来做，但是低版本浏览器不支持*/
+.box{width:100%;margin:0 auto;background:blue;position: relative;height: 0.8rem;overflow:hidden;}
+.box3{height: 0.8rem;width: 50%;background: red;float: left;position: relative;     font-size: 0.5rem;    text-align: center;}
+.box1{background: red;}
+.box2{background:green;}
+.box1:after,.box2:before{content: "";display: block;width:0;height: 0;border:0.8rem solid transparent;z-index:2;position: absolute;}
+.box1:after {top:0;right:-0.4rem; border-top-color:red;}
+.box2:before{top:0;left:-1.2rem; border-right-color: green ;}
