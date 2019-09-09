@@ -1,14 +1,15 @@
 <!doctype html>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 <nav>
-  <h1>Flaskr</h1>
+  <h1>测试机借用</h1>
   <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% if g.username %}
+      <li><span>{{ g.username }}</span>
+      <li><a href="{{ url_for('auth.login') }}">切换用户</a>
     {% else %}
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+      <li><a href="{{ url_for('auth.login') }}">登录</a>
     {% endif %}
   </ul>
 </nav>

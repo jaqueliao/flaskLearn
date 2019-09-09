@@ -37,26 +37,16 @@ def login():
 
 @bp.before_app_request
 def load_logged_in_user():
-    user_id = session.get('user_id')
-
-    if user_id is None:
-        g.user = None
-    else:
-        g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
-        ).fetchone()
-
-
-@bp.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('index'))
+    username = request.cookies.get('username')
+    g.username = username
+    phone = request.cookies.get('phone')
+    g.phone = phone
 
 
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.user is None:
+        if g.username is None or g.phone is None:
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)

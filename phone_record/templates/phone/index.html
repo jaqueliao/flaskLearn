@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block header %}
+  <h1>{% block title %}测试机借用{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>哈哈</p>
+    <div class="label">
+        <ul>
+            <li class="showed borrowTab">借</li>
+            <li>还</li>
+        </ul>
+        <div class="showed"><h3>This is the first section</h3></div>
+        <div>
+            <h3>This is the second section</h3>
+            <style type="text/css">
+                /*如果位置调整:after和:before的角度，再用旋转来做，但是低版本浏览器不支持*/
+                .box{width:1000px;margin:0 auto;background:blue;position: relative;height: 100px;overflow:hidden;}
+                .box3{height: 100px;width: 500px;background: red;float: left;position: relative;}
+                .box1{background: red;}
+                .box2{background:green;}
+                .box1:after,.box2:before{content: "";display: block;width:0;height: 0;border:100px solid transparent;z-index:2;position: absolute;}
+                .box1:after {top:0;right:-50px; border-top-color:red;}
+                .box2:before{top:0;left:-150px; border-right-color: green ;}
+            </style>
+
+            <div class="box">
+                <div class="box3 box1"></div>
+                <div class="box3 box2"></div>
+            </div>
+
+        </div>
+    </div>
+<script>
+		$(".label li").click(function () {
+	     if(! $(this).hasClass(".showed")){
+	    $(".showed").removeClass("showed");
+        $(this).addClass("showed");
+    	$(".label>div").eq($(this).index()).addClass("showed");
+    	}
+    })
+</script>
+{% endblock %}
