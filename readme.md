@@ -8,6 +8,7 @@
 - 基础命令  
 ```cmd
 set FLASK_APP=flaskr
+set FLASK_APP=phone_record
 set FLASK_ENV=development
 flask run
 flask init-db

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}信息填写{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="username">姓名</label>
+    <input name="username" id="username" required>
+    <label for="phone">手机</label>
+    <input type="phone" name="phone" id="phone" required>
+    <input type="submit" value="Log In">
+  </form>
+{% endblock %}
