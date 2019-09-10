@@ -6,28 +6,53 @@
 
 {% block content %}
     <div class="box">
-        <div class="box3 box1">借</div>
-        <div class="box3 box2">还</div>
-    </div>
-    <p>哈哈</p>
-    <div class="label">
-        <ul>
-            <li class="showed borrowTab">借</li>
-            <li>还</li>
-        </ul>
-        <div class="showed"><h3>This is the first section</h3></div>
-        <div>
-            <h3>This is the second section</h3>
-        </div>
+        <div class="box3 borrowTab boxCover1" id="borrowTab"></div>
+        <div class="box3 givebackTab" id="givebackTab"></div>
     </div>
 
+    <div class="list">
+        <div class="showed">
+             <form action="borrow" method="get">
+                 {% for phone in phones %}
+                     <label>
+                         {% if phone['status'] == 1 %}
+                            <input name="phoneId" type="checkbox" value="{{ phone['id'] }}" disabled/>
+                         {% else %}
+                            <input name="phoneId" type="checkbox" value="{{ phone['id'] }}"/>
+                        {% endif %}
+                        <img src="{{ phone['picUrl'] }}">
+                        <h3>{{ phone['name'] }}</h3>
+                        <p>{{ phone['detail'] }}</p>
+                    </label>
+                 {% endfor %}
+                <input type="submit" value="提交">
+            </form>
+        </div>
+        <div>
+            <form action="giveBack" method="get">
+                 {% for phone in myPhones %}
+                     <label>
+                         <input name="phoneId" type="checkbox" value="{{ phone['id'] }}"/>
+                        <img src="{{ phone['picUrl'] }}">
+                        <h3>{{ phone['name'] }}</h3>
+                        <p>{{ phone['detail'] }}</p>
+                    </label>
+                 {% endfor %}
+                <input type="submit" value="提交">
+            </form>
+        </div>
+    </div>
+    <div class="bottom"> 提交</div>
 <script>
-		$(".label li").click(function () {
-	     if(! $(this).hasClass(".showed")){
-	    $(".showed").removeClass("showed");
-        $(this).addClass("showed");
-    	$(".label>div").eq($(this).index()).addClass("showed");
-    	}
-    })
+    $("#borrowTab").click(
+        function () {
+            $(this).removeClass("boxCover1").addClass("boxCover2")
+        }
+    )
+    $("#givebackTab").click(
+        function () {
+            $("#borrowTab").removeClass("boxCover2").addClass("boxCover1")
+        }
+    )
 </script>
 {% endblock %}

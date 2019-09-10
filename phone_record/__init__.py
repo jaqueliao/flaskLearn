@@ -8,7 +8,9 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        SQLALCHEMY_DATABASE_URI='mysql://jaque:jaque@139.217.131.15:8806/phone_record',
+        SQLALCHEMY_TRACK_MODIFICATIONS=True,
+        SQLALCHEMY_ECHO=True,
     )
 
     if test_config is None:
@@ -29,8 +31,8 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    from . import db
-    db.init_app(app)
+    from . import database
+    database.init_app(app)
 
     from . import auth, phone
     app.register_blueprint(auth.bp)
